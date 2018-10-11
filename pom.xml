@@ -7,6 +7,7 @@
     <groupId>dk.spring-data-mongdb</groupId>
     <artifactId>mongodb</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>war</packaging>
 
     <parent>
         <groupId>org.springframework.boot</groupId>

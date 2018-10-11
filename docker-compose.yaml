@@ -1,0 +1,25 @@
+version: '2'
+
+networks:
+  app-tier:
+    driver: bridge
+
+services:
+  mongo:
+    image: 'bitnami/mongodb'
+    container_name: mongo
+    networks:
+      - app-tier
+    ports:
+      - "27017:27017"
+  myapp:
+    image: 'testspringmongo2'
+    restart: always
+    networks:
+      - app-tier
+    ports:
+        - "8080:8080"
+    links:
+      - mongo
+    environment:
+      - spring.data.mongodb.uri=mongodb://mongo:27017/summerhouse
