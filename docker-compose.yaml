@@ -1,4 +1,4 @@
-version: '2'
+version: '3'
 
 networks:
   app-tier:
@@ -13,13 +13,13 @@ services:
     ports:
       - "27017:27017"
   myapp:
-    image: 'testspringmongo2'
+    build: ./
     restart: always
     networks:
       - app-tier
     ports:
         - "8080:8080"
-    links:
+    depends_on:
       - mongo
     environment:
       - spring.data.mongodb.uri=mongodb://mongo:27017/summerhouse
